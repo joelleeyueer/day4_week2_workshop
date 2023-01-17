@@ -5,8 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c9e8c40-57bc-4eb7-9726-58645c3d7982" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/nus/iss/Cookie.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nus/iss/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/nus/iss/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/nus/iss/Cookie.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nus/iss/Cookie.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nus/iss/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nus/iss/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,5 +67,15 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.io.FileNotFoundException" package="java.io" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
