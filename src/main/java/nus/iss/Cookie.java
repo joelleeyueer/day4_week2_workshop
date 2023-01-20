@@ -35,13 +35,13 @@ public class Cookie {
         if (cookieItems != null){
             return cookieItems.get((random.nextInt(cookieItems.size())));
         } else {
-            return "No cookies found :(";
+            return "returnCookie: No cookies found :(";
         }
     }
 
     public void showCookies(){
         if (cookieItems == null) {
-            System.err.println("No cookies found :(");
+            System.err.println("showCookies: No cookies found :(");
         } else {
             for (String cookie:cookieItems){
                 System.out.println(cookie);

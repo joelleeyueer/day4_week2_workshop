@@ -3,6 +3,8 @@ package nus.iss;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Server {
 
@@ -13,44 +15,22 @@ public class Server {
     }
 
     public void serverStart(Cookie cookie) throws IOException {
-        ServerSocket server = new ServerSocket(port);
-        System.out.println("Waiting incoming connection");
-        Socket socket = server.accept();
-        System.out.println("Server established, listening in on port " + port);
+        ServerSocket server = null;
             try {
-                while(true){
-                    InputStream is = socket.getInputStream();
-                    BufferedInputStream bis = new BufferedInputStream(is);
-                    DataInputStream dis = new DataInputStream(bis);
-                    String messageReceived = "";
-                    messageReceived = dis.readUTF();
+                while (true) {
+                    server = new ServerSocket(port);
+                    server.setReuseAddress(true);
+                    System.out.println("Waiting incoming connection");
+                    Socket client = server.accept();
+                    System.out.println("New client connected");
 
-                    OutputStream os = socket.getOutputStream();
-                    BufferedOutputStream bos = new BufferedOutputStream(os);
-                    DataOutputStream dos = new DataOutputStream(bos);
-
-                    switch (messageReceived){
-                        case ("close"):
-                            System.out.println("Shutting down the server, goodbye!");
-                            server.close();
-                            socket.close();
-                            bis.close();
-                            bos.close();
-                            is.close();
-                            os.close();
-                        case ("get-cookie"):
-                            String cookieValue = cookie.returnCookie();
-                            System.out.println(cookieValue);
-                            dos.writeUTF(cookieValue);
-                            dos.flush();
-                    }
+                    CookieClientHandler cch = new CookieClientHandler(client);
+                    new Thread(cch).start();
                 }
-
             } catch (Exception e){
                 server.close();
-                socket.close();
                 System.err.println(e);
-            }
+        }
     }
 
     @Override

@@ -2,6 +2,7 @@ package nus.iss;
 
 import java.io.*;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class Client {
 
@@ -37,11 +38,13 @@ public class Client {
                 String readServerInput=dis.readUTF();
                 System.out.println(readServerInput);
 
-            } catch (Exception e){
-                client.close();
+            } catch (SocketException e){
                 System.err.println(e);
+                client.close();
+            } catch (Exception e){
+                System.err.println(e);
+                client.close();
             }
-            client.close();
         }
 
 
