@@ -17,10 +17,9 @@ public class Server {
     public void serverStart(Cookie cookie) throws IOException {
         ServerSocket server = null;
             try {
+                server = new ServerSocket(port);
+                System.out.println("Waiting incoming connection");
                 while (true) {
-                    server = new ServerSocket(port);
-                    server.setReuseAddress(true);
-                    System.out.println("Waiting incoming connection");
                     Socket client = server.accept();
                     System.out.println("New client connected");
 
